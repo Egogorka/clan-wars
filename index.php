@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style_.css">
     <link rel="stylesheet" href="/navbar/_.css">
 </head>
 <body>
@@ -26,12 +26,9 @@
 <!-- Navbar />, Logo </ -->
 
 
-
 <!-- Logo />, Container </ -->
 
 
 </body>
-
-<script type="text/javascript" src="/navbar/_.js"></script>
 
 </html>

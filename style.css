@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'MachineC';
+    src: url('/fonts/MachineC/10733.otf');
+    src: url('/fonts/MachineC/10733.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    font-family: 'MachineC', serif;
+}
+
+body {
+    background-image: url('images/background.jpg');
+    display : grid;
+    grid-template-columns: 100px 1fr 1fr 1fr 1fr 100px;
+    grid-template-rows: 60px 30px 60px auto 30px;
+}
+
+.hr_s { height: 0; border-bottom: 3px solid #161616; }
+/*
+div { border: 1px solid black;}
+
+#container{
+    padding: 0px;
+}
+
+
+
+#nav_main > ul > li {
+    display: inline-block;
+    border: 1px solid grey;
+    padding: 10px;
+    margin: 0px;
+}*/

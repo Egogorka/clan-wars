@@ -1,0 +1,7 @@
+.window {
+    position: fixed;
+    display: none;
+    z-index: 90;
+    justify-content: center;
+    align-items: center;
+}

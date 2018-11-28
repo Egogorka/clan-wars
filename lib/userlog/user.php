@@ -3,21 +3,13 @@
 
 <?php
 
-/*
- * User Interface and Realization
- */
-
 ////////////////////////////////////////////////////////////////////
 // Подключаем скрипты, если ещё не подключили, с помощью JSEnable
 ////////////////////////////////////////////////////////////////////
-?>
 
-<?php
     global $_JSEnable;
     $_JSEnable->enable("/lib/windows/win.js");
-?>
 
-<?php
 ////////////////////////////////////////////////////////////////////
 // HTML блок
 ////////////////////////////////////////////////////////////////////
@@ -35,9 +27,9 @@
     box-shadow: inset 0 0 30px #070707;
 ">
     <div>
-        <form id="log_form" action="/userlog/login.php" method="post">
+        <form id="log_form" action="/lib/userlogrlog/login.php" method="post">
             <p align="center">Login in</p>
-            <label><input type="text" name="login">Login</label><br>
+            <label><input type="text" name="login"> Login</label><br>
             <label><input type="password" name="pass"> Password</label><br>
             <input type="submit" style="color:black;" value="Send">
         </form>
@@ -56,7 +48,7 @@
     box-shadow: inset 0 0 30px #070707;
 ">
     <div>
-        <form id="reg_form" action="/userlog/login.php" method="post">
+        <form id="reg_form" action="/lib/userlogrlog/login.php" method="post">
             <p align="center">Sign up</p>
             <label><input type="text" name="login"> Login</label><br>
             <label><input type="password" name="pass"> Password</label><br>
@@ -75,44 +67,42 @@
 
 <script type="text/javascript">
 
-    window.addEventListener('load', function() {
-        // Center(GetByID("logImg"),document. 'center', 'left', 0, 0, 3, 0);
-        let logImg = GetByID("logImg");
-        logImg.style.top = window.innerHeight/2 - 3*logImg.offsetHeight/2 + "px";
-        logImg.style.left = '0px';
-    });
+    let logImg = GetByID("logImg");
+    logImg.style.top = window.innerHeight/2 - 3*logImg.offsetHeight/2 + "px";
+    logImg.style.left = '0px';
 
     GetByID('logImg').onclick = function () {win_show('login_window'); };
 
-    var logform = GetByID('log_form');
-    logform.onsubmit = function () {
+    var form = GetByID('log_form');
+    form.onsubmit = function () {
 
         var message = {
-            login : logform.elements.login.value,
-            pass  : logform.elements.pass.value,
+            login : form.elements.login.value,
+            pass  : form.elements.pass.value,
             type  : 'login',
         };
 
-        AjaxRequest('POST','/userlog/login.php',JSON.stringify(message),function (response) {
+        AjaxRequest('POST','/lib/userlog/login.php',JSON.stringify(message),function (response) {
             alert(response);
-        },function () {return false;});
+            if (response === 'Logged successfully') window.location.reload();
+        },function () {alert('Time out');}, 7000);
 
         return false;
     };
 
-    var regform = GetByID('reg_form');
-    regform.onsubmit = function () {
+    form = GetByID('reg_form');
+    form.onsubmit = function () {
 
         var message = {
-            login : regform.elements.login.value,
-            pass  : regform.elements.pass.value,
-            email : regform.elements.email.value,
+            login : form.elements.login.value,
+            pass  : form.elements.pass.value,
+            email : form.elements.email.value,
             type  : 'regis',
         };
 
-        AjaxRequest('POST','/userlog/login.php',JSON.stringify(message),function (response) {
+        AjaxRequest('POST','/lib/userlog/login.php',JSON.stringify(message),function (response) {
             alert(response);
-        },function () {return false;});
+        },function () {alert('Time out');}, 7000);
 
         return false;
     };

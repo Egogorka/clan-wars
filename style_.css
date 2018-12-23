@@ -6,10 +6,12 @@
     font-style: normal;
 }
 
-html {
-    font-family: 'MachineC', serif;
-    color : lightgray;
+h1 {
+    text-align: center; color: lightgray; letter-spacing: 0.2em;
+}
 
+html {
+    color : lightgray;
     height: 100%;
     padding: 0;
     margin: 0;

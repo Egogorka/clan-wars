@@ -1,6 +1,8 @@
 <?php
 
-    require '../mysqlin.php';
+    session_start();
+
+    require_once $_SERVER['DOCUMENT_ROOT'].'/lib/main/mysqlin.php';
 
     $get = json_decode($_POST["param"]);
 
@@ -17,7 +19,10 @@
             $pass = $dbarr->pass_hash;
 
             if(password_verify($get->pass, $pass)) {
-                echo 'Gut, gut';
+                echo 'Logged successfully';
+                $_SESSION['username'] = $dbarr->username;
+                $_SESSION['id']       = $dbarr->id;
+                $_SESSION['clan_id']  = $dbarr->clan_id;
             } else {
                 echo 'Wrong password';
             }
@@ -41,6 +46,7 @@
             $values = array($get->login, password_hash($get->pass, PASSWORD_DEFAULT), $get->email);
             $sql = "INSERT INTO users (username,pass_hash,email) VALUES (?,?,?)";
             $stmt = $pdo->prepare($sql);
+            $stmt->execute($values);
 
             //if ($stmt){}
             // TODO Registration conformation

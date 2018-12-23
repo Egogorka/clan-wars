@@ -35,5 +35,3 @@ class EnableJS{
 //$GLOBALS['enableJs'] = new EnableJS();
 
 $_JSEnable = new EnableJS();
-
-//$_Dir = stristr(__DIR__, "/main", true);

@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,30 +7,23 @@
     <title>Title</title>
     <link rel="stylesheet" href="lib/windows/win.css">
     <link rel="stylesheet" href="style_.css">
-    <link rel="stylesheet" href="userlog/user.css">
+    <link rel="stylesheet" href="lib/users/userlog/user.css">
 </head>
 <body>
 
-<?php require 'lib/main/main.php'; ?>
-<script type="text/javascript" src="/lib/main/main.js"></script>
-<?php require 'userlog/user.php';  ?>
+<?php
+    require 'lib/main/main.php';
 
-<!-- Navbar </ -->
+    global $_JSEnable;
+    $_JSEnable->enable('lib/main/main.js');
 
-<a class="nav a1" href="index.php">
-    MAIN
-</a>
-<a class="nav a2" href="#">
-    CLAN
-</a>
-<a class="nav a3" href="#">
-    SESSIONS
-</a>
-<a class="nav a4 a_cur" href="maps.php">
-    MAPS
-</a>
+    require 'lib/users/userlog/user.php';
 
-<!-- Navbar />, Logo </ -->
+    $navInput = "maps";
+    require 'nav.php';
+?>
+
+<!--  Logo </ -->
 
 <div id="logo-contain">
     <img src="images/logo.png" style=" height:calc(100% - 30px); max-width:calc(100% - 30px);">
@@ -37,6 +32,8 @@
 <!-- Logo />, Container </ -->
 
 <div id="container">
+
+    <h1 style="text-align: center; color: lightgray; letter-spacing: 0.2em;">Maps</h1>
 
     <center>
         <div class="search">
@@ -47,18 +44,17 @@
             <div class="vr"></div>
             <img style="vertical-align: middle; height: 1.3em;" src="images/gear.png">
             <div class="vr"></div>
-            <div class="graybut button">CREATE YOUR OWN</div>
+            <a href="old_mapeditor/mapeditor/index.html" class="graybut button">CREATE</a>
         </div>
     </center>
 
-    <h1 style="text-align: center; color: lightgray; letter-spacing: 0.2em;">Maps</h1>
-
     <?php
-    require 'mysqlin.php'; // Заходим в MySQL
+    // Input parameters for search
+    $schInput = [
+            'db' => 'maps'
+        ];
 
-    $sql = "SELECT * FROM maps";
-
-
+    require 'lib/search/sch.php';
     ?>
 
 </div>

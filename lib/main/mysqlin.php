@@ -1,5 +1,6 @@
 <?php
 
+/*
 $host       = 'localhost';
 $db         = 'db_erem';
 $user       = 'erem';
@@ -29,3 +30,17 @@ function pdoSet($allowed, &$values, $source = array()) {
     }
     return substr($set, 0, -2);
 }
+*/
+
+require $_SERVER['DOCUMENT_ROOT'].'/lib/main/mysql.php';
+
+$opts = array(
+    'host'      => 'localhost',
+    'user'      => 'erem',
+ 	'pass'  => '2877dc',
+ 	'db'        => 'db_erem',
+ 	'charset'   => 'utf8'
+);
+
+$db = new SafeMySQL($opts);
+

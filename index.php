@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,33 +7,23 @@
     <title>Title</title>
     <link rel="stylesheet" href="/style_.css">
     <link rel="stylesheet" href="lib/windows/win.css">
-    <link rel="stylesheet" href="userlog/user.css">
+    <link rel="stylesheet" href="lib/users/userlog/user.css">
 </head>
 <body>
 
-<?php require 'lib/main/main.php';
-      global $_JSEnable;
-      $_JSEnable->enable('lib/main/main.js');
+<?php
+    require 'lib/main/main.php';
 
-      require 'userlog/user.php';
+    global $_JSEnable;
+    $_JSEnable->enable('lib/main/main.js');
+
+    require 'lib/users/userlog/user.php';
+
+    $navInput = "main";
+    require 'nav.php';
 ?>
 
-<!-- Navbar </ -->
-
-<a class="nav a1 a_cur" href="index.php">
-    MAIN
-</a>
-<a class="nav a2" href="#">
-    CLAN
-</a>
-<a class="nav a3" href="#">
-    SESSIONS
-</a>
-<a class="nav a4" href="maps.php">
-    MAPS
-</a>
-
-<!-- Navbar />, Logo </ -->
+<!-- Logo </ -->
 
 <div id="logo-contain">
     <img src="images/logo.png" style=" height:calc(100% - 30px); max-width:calc(100% - 30px);">
@@ -45,7 +37,7 @@
     <hr style="size: 6px; width: calc(100%-20px);">
 
     <p><b>ClanWars - мультипользовательская стратегическая игра</b>, в которой игроки - кланы, а в кланах уже вы.</p>
-    <p>Процесс игры называется <a href="#">сессией</a>, которая происходит на какой-либо <a href="maps.php"> карте </a>, которую можно сделать самому или взять уже существующую.</p>
+    <p>Процесс игры называется <a href="sessions.php">сессией</a>, которая происходит на какой-либо <a href="maps.php"> карте </a>, которую можно сделать самому или взять уже существующую.</p>
 
     <p> Процесс игры разделяется на несколько <em>фаз</em>, повторяющиеся друг за другом до исхода (вкупе один обход цикла фаз - это ход), а именно: </p>
     <ul>
